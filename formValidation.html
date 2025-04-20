@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+    <title>Spotify</title>
+</head>
+
+<body class="bg-[url(assets/formVbg.jpg)] bg-cover flex justify-center items-center min-h-screen">
+    <div class="outer h-[550px] w-[450px] border-4 border-solid flex flex-col justify-evenly items-center bg-black rounded-md">
+        <div class="icon-name flex justify-center items-center">
+            <div class="icon bg-[url(/assets/icon.png)] bg-contain h-[50px] w-[50px]"></div>
+            <div class="name font-semibold flex items-center text-white text-2xl">Spotify</div>
+        </div>
+
+        <div class="text-white text-3xl font-bold text-center">Music for everyone.</div>
+
+        <div class="email-div">
+            <input type="text" class="email bg-[#333333] hover:bg-[#292929] placeholder-gray-300 h-[50px] w-[300px] pl-[20px]
+            text-white" placeholder="Enter email">
+        </div>
+        <div class="email-error text-white"></div>
+
+        <div class="password-div relative w-[300px]">
+            <input id="password" type="password"
+                class="password bg-[#333333] hover:bg-[#292929] placeholder-gray-300 h-[50px] w-full pl-[20px] text-white pr-[40px]"
+                placeholder="Password">
+            <button id="togglePassword"
+                class="visible-password bg-[url(assets/hide.png)] bg-contain bg-no-repeat h-[20px] w-[20px] absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer">
+            </button>
+        </div>
+
+        <div class="password-error text-white"></div>
+
+        <div>
+            <button class="login h-[50px] w-[300px] bg-white rounded-4xl font-semibold cursor-pointer">LOG IN</button>
+        </div>
+    </div>
+
+    <script>
+        const emailInput = document.querySelector('.email');
+        const passwordInput = document.querySelector('.password');
+        const loginButton = document.querySelector('.login');
+        const emailError = document.querySelector('.email-error');
+        const passwordError = document.querySelector('.password-error');
+
+        loginButton.addEventListener('click', function (event) {
+            let isValid = true;
+            emailError.innerHTML = "";
+            passwordError.innerHTML = "";
+
+            if (!emailInput.value || !/\S+@\S+\.\S+/.test(emailInput.value)) {
+                emailError.innerHTML = "Please enter a valid email address.";
+                isValid = false;
+            }
+
+            if (!passwordInput.value || passwordInput.value.length < 8) {
+                passwordError.innerHTML = "Password should contain minimum 8 characters";
+                isValid = false;
+            }
+
+            if (!isValid) {
+                event.preventDefault();
+            } else {
+                alert("Form is valid. Proceeding to login...");
+            }
+        });
+
+        const visibleBtn = document.getElementById('togglePassword');
+        const passwordField = document.getElementById('password');
+        visibleBtn.addEventListener('click', () => {
+            const type = passwordField.type === 'password' ? 'text' : 'password';
+            passwordField.type = type;
+        });
+
+        localStorage.setItem('lastPage', window.location.pathname);
+    </script>
+
+</body>
+
+</html>
