@@ -68,7 +68,9 @@
             if (!isValid) {
                 event.preventDefault();
             } else {
-                alert("Form is valid. Proceeding to login...");
+                // alert("Form is valid. Proceeding to login...");
+                localStorage.setItem('lastPage', 'formValidation.html');
+                window.location.href = 'main.html';
             }
         });
 

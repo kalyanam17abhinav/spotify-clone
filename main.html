@@ -48,21 +48,74 @@
         .scrollable::-webkit-scrollbar {
             display: none;
         }
-    </style>
-</head>
 
-<body class="bg-[#121212]">
+        .try::-webkit-scrollbar {
+            display: none;
+        }
+
+        .first::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .second::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .third::-webkit-scrollbar {
+            display: none;
+        }
+
+        .made-for-you-albums::-webkit-scrollbar {
+            display: none;
+        }
+
+        .playing-song-title::-webkit-scrollbar {
+            display: none;
+        }
+
+        @keyframes marquee {
+            0%   { transform: translateX(100%); }
+            100% { transform: translateX(0%); }
+        }
+        
+        .animate-marquee {
+            animation: marquee 10s linear 3s infinite normal;
+        }
+
+        @keyframes moveToEnd {
+            0% { left: 0; }
+            100% { left: 100%; }
+        }
+
+        @keyframes fillBar {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        .animate-moveToEnd {
+            animation: moveToEnd 100s linear infinite;
+        }
+
+        .animate-fillBar {
+            animation: fillBar 100s linear infinite;
+        }
+
+
+    </style>
+    </head>
+
+<body class="md:bg-black bg-[#121212] md:fixed">
     <!-- navbar section -->
-    <nav class="navbar bg-black h-[55px] relative flex justify-between items-center">
-        <div
-            class="logo bg-[url(assets/icon.png)] bg-contain h-[30px] w-[30px] md:h-[35px] md:w-[35px] md:cursor-pointer">
+    
+    <nav class="navbar bg-black h-[55px] w-screen relative flex justify-between items-center">
+        <div class="logo bg-[url(assets/icon.png)] bg-contain h-[30px] w-[30px] md:h-[35px] md:w-[35px] md:cursor-pointer">
         </div>
 
         <div class="som search-openapp-menu block md:hidden bg-black h-auto w-auto flex items-center justify-center">
             <div class="search bg-[url(assets/search.png)] bg-contain h-[20px] w-[20px]"></div>
             <div class="open-app text-black bg-white h-[30px] w-[80px] rounded-3xl border-2 border-white flex justify-center items-center font-semibold text-sm">Open App</div>
             <div class="menu bg-[url(assets/menu.png)] bg-contain h-[25px] w-[25px]" id="menuDiv"></div>
-            <div class="hiddenDiv hidden fixed inset-0 bg-black bg-opacity-75 pl-[40px] pt-[60px] z-50 space-y-4">
+            <div class="hiddenDiv hidden fixed inset-0 bg-black bg-opacity-80 pl-[40px] pt-[60px] z-50 space-y-4">
                 <div class="close-menu text-white text-[30px] absolute top-[10px] right-[20px]" id="close-menu">X</div>
                 <div class="menu-eles text-white font-semibold text-2xl">Log in</div>
                 <div class="menu-eles text-white font-semibold text-2xl">Sign up</div>
@@ -75,11 +128,11 @@
             </div>
         </div>
 
-        <div class="home-searchbar hidden md:flex md:space-x-4 md:items-center md:w-auto md:h-auto">
-            <div class="home h-[40px] w-[40px] flex justify-center items-center cursor-pointer rounded-full bg-[#2a2a2a] hover:bg-[#3a3a3a] mx-4">
-                <img src="assets/home.png" alt="Home" class="h-3/4 w-3/4 object-contain">
+        <div class="home-searchbar hidden md:flex md:items-center md:w-auto md:h-auto md:ml-[40px]">
+            <div class="home h-[40px] w-[40px] flex justify-center items-center cursor-pointer rounded-full bg-[#2a2a2a] hover:bg-[#3a3a3a] mr-[10px]">
+                <img src="assets/home.png" alt="Home" class="h-1/2 w-1/2 object-contain">
             </div>
-            <div class="searchbar h-[40px] w-[400px] bg-[#2a2a2a] hover:bg-[#3a3a3a]  border border-transparent hover:border-[#d1d1d1] rounded-3xl flex justify-between items-center">
+            <div class="searchbar h-[40px] w-[400px] bg-[#2a2a2a] hover:bg-[#3a3a3a] border border-transparent hover:border-[#d1d1d1] rounded-3xl flex justify-between items-center">
                 <div class="search2 h-[25px] w-auto flex items-center text-white text-sm whitespace-nowrap">
                     <img src="assets/search.png" alt="Search Icon" class="search2-img h-full w-[20px] object-contain mr-2 cursor-pointer">
                     <input type="text" placeholder="What do you want to play?" class="bg-transparent placeholder-gray-400 text-gray-700 text-sm w-[200px]" />
@@ -96,235 +149,1180 @@
         </div>
     </nav>
 
-    <!-- main body -->
-    <div class="mobile-view md:hidden block mt-[30px] ml-[15px] min-h-[275px] flex flex-col space-y-[30px]">
+    <!-- mobile view -->
+    <div class="main-body-mobile relative">
+        <div class="mobile-view md:hidden block mt-[30px] ml-[15px] min-h-[275px] flex flex-col space-y-[30px]">
     
-        <div class="trending-songs">
-            <div class="heading text-white text-[1.4rem] font-bold">Trending songs</div>
-            <div class="scrollable h-[80%] mt-[10px] mb-0 w-full flex overflow-x-scroll overflow-y-hidden">
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/trending.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">Trending Now India</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/trending.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">Trending Now India</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/trending.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">Trending Now India</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/trending.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">Trending Now India</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/trending.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">Trending Now India</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="popular-artists">
-            <div class="heading text-white text-[1.4rem] font-bold">Popular artists</div>
-            <div class="scrollable h-[80%] mt-[10px] mb-0 w-full flex overflow-x-scroll overflow-y-hidden">
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/arrahman.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">A.R. Rahman</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/arrahman.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">A.R. Rahman</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/arrahman.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">A.R. Rahman</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/arrahman.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">A.R. Rahman</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/arrahman.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">A.R. Rahman</div>
+            <div class="trending-songs">
+                <div class="heading text-white text-[1.4rem] font-bold">Trending songs</div>
+                <div class="scrollable h-[80%] mt-[10px] mb-0 w-full flex overflow-x-scroll overflow-y-hidden">
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/trending.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">Trending Now India</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/trending.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">Trending Now India</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/trending.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">Trending Now India</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/trending.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">Trending Now India</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/trending.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">Trending Now India</div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="popular-albums-singles">
-            <div class="heading text-white text-[1.4rem] font-bold">Popular albums and singles</div>
-            <div class="scrollable h-[80%] mt-[10px] mb-0 w-full flex overflow-x-scroll overflow-y-hidden">
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/glory.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">Glory</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/glory.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">Glory</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/glory.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">Glory</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/glory.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">Glory</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/glory.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">Glory</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="popular-radio">
-            <div class="heading text-white text-[1.4rem] font-bold">Popular radio</div>
-            <div class="scrollable h-[80%] mt-[10px] mb-0 w-full flex overflow-x-scroll overflow-y-hidden">
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/kkradio.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">KK Radio</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/kkradio.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">KK Radio</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/kkradio.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">KK Radio</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/kkradio.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">KK Radio</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/kkradio.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">KK Radio</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="featured-charts">
-            <div class="heading text-white text-[1.4rem] font-bold">Featured Charts</div>
-            <div class="scrollable h-[80%] mt-[10px] mb-0 w-full flex overflow-x-scroll overflow-y-hidden">
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/viral50.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">Viral 50 - India</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/viral50.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">Viral 50 - India</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/viral50.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">Viral 50 - India</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/viral50.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">Viral 50 - India</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/viral50.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">Viral 50 - India</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="indias-best">
-            <div class="heading text-white text-[1.4rem] font-bold">India's Best</div>
-            <div class="scrollable h-[80%] mt-[10px] mb-0 w-full flex overflow-x-scroll overflow-y-hidden">
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/kollywood.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">Kollywood Cream</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/kollywood.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">Kollywood Cream</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/kollywood.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">Kollywood Cream</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/kollywood.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">Kollywood Cream</div>
-                </div>
-                <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
-                    <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/kollywood.jpg">
-                    <div class="album-name text-white font-medium text-md mt-[5px]">Kollywood Cream</div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="above-footer text-white ml-[20px] mt-[40px] md:hidden block">
-        <div class="first mb-[40px]">
-            <div class="company font-bold my-[10px]">Company</div>
-            <div class="about my-[10px] text-[#bebebe]">About</div>
-            <div class="jobs my-[10px] text-[#bebebe]">Jobs</div>
-            <div class="fortherecord my-[10px] text-[#bebebe]">For the Record</div>
-        </div>
-        <div class="second mb-[40px]">
-            <div class="communities font-bold my-[10px]">Communitites</div>
-            <div class="forartists my-[10px] text-[#bebebe]">For Artists</div>
-            <div class="developers my-[10px] text-[#bebebe]">Developers</div>
-            <div class="advertising my-[10px] text-[#bebebe]">Advertising</div>
-            <div class="investors my-[10px] text-[#bebebe]">Investors</div>
-            <div class="vendors my-[10px] text-[#bebebe]">Vendors</div>
-        </div>
-        <div class="third mb-[40px]">
-            <div class="usefullinks font-bold my-[10px]">Useful links</div>
-            <div class="support my-[10px] text-[#bebebe]">Support</div>
-            <div class="freemobileapp my-[10px] text-[#bebebe]">Free Mobile App</div>
-        </div>
-        <div class="fourth mb-[40px]">
-            <div class="spotifyplans font-bold my-[10px]">Spotify Plans</div>
-            <div class="premiumindividual my-[10px] text-[#bebebe]">Premium Individual</div>
-            <div class="premiumduo my-[10px] text-[#bebebe]">Premium Duo</div>
-            <div class="premiumfamily my-[10px] text-[#bebebe]">Premium Family</div>
-            <div class="premiumstudent my-[10px] text-[#bebebe]">Premium Student</div>
-            <div class="spotifyfree my-[10px] text-[#bebebe]">Spotify Free</div>
-        </div>
-    </div>
-
-    <div class="social flex space-x-[10px] ml-[20px] my-[40px] md:hidden block">
-        <img src="assets/instagram.png" class="bg-[#808080] h-[30px] w-[30px] rounded-full">
-        <img src="assets/twitter.png" class="bg-[#808080] h-[30px] w-[30px] rounded-full">
-        <img src="assets/facebook.png" class="bg-[#808080] h-[30px] w-[30px] rounded-full">
-    </div>
-
-    <div class="flex items-center justify-center md:hidden block">
-        <hr class="opacity-60 w-[90%] my-[30px]">
-      </div>
-      
-    <footer class="text-[#bebebe] ml-[20px] my-[5px] text-sm space-y-[12px] md:hidden block">
-        <div class="first flex space-x-4">
-            <div class="legal">Legal</div>
-            <div class="spc">Safety & Privacy Center</div>
-            <div class="pp">Privacy Policy</div>
-            <div class="cookies">Cookies</div>
-        </div>
-        <div class="second flex space-x-4">
-            <div class="aa">About Ads</div>
-            <div class="acc">Accessbility</div>
-        </div>
-        <div class="third">©2025 Spotify AB</div>
-        <div class="fourth text-white border-2 border-[#bebebe] rounded-[40px] h-[30px] w-[100px] flex justify-center items-center [10px]">English</div>
-    </footer>
-
     
-    <script>
-        document.getElementById('menuDiv').addEventListener('click', function () {
-            const hiddenDiv = document.querySelector('.hiddenDiv');
-            hiddenDiv.classList.toggle('hidden');
-        });
-
-        document.getElementById('close-menu').addEventListener('click', function () {
-            const closeMenu = document.querySelector('.hiddenDiv');
-            closeMenu.classList.toggle('hidden');
-        })
-    </script>
-
-    </body>
+            <div class="popular-artists">
+                <div class="heading text-white text-[1.4rem] font-bold">Popular artists</div>
+                <div class="scrollable h-[80%] mt-[10px] mb-0 w-full flex overflow-x-scroll overflow-y-hidden">
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/arrahman.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">A.R. Rahman</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/arrahman.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">A.R. Rahman</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/arrahman.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">A.R. Rahman</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/arrahman.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">A.R. Rahman</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/arrahman.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">A.R. Rahman</div>
+                    </div>
+                </div>
+            </div>
     
-    </html>
+            <div class="popular-albums-singles">
+                <div class="heading text-white text-[1.4rem] font-bold">Popular albums and singles</div>
+                <div class="scrollable h-[80%] mt-[10px] mb-0 w-full flex overflow-x-scroll overflow-y-hidden">
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/glory.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">Glory</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/glory.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">Glory</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/glory.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">Glory</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/glory.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">Glory</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/glory.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">Glory</div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="popular-radio">
+                <div class="heading text-white text-[1.4rem] font-bold">Popular radio</div>
+                <div class="scrollable h-[80%] mt-[10px] mb-0 w-full flex overflow-x-scroll overflow-y-hidden">
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/kkradio.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">KK Radio</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/kkradio.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">KK Radio</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/kkradio.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">KK Radio</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/kkradio.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">KK Radio</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/kkradio.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">KK Radio</div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="featured-charts">
+                <div class="heading text-white text-[1.4rem] font-bold">Featured Charts</div>
+                <div class="scrollable h-[80%] mt-[10px] mb-0 w-full flex overflow-x-scroll overflow-y-hidden">
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/viral50.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">Viral 50 - India</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/viral50.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">Viral 50 - India</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/viral50.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">Viral 50 - India</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/viral50.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">Viral 50 - India</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/viral50.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">Viral 50 - India</div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="indias-best">
+                <div class="heading text-white text-[1.4rem] font-bold">India's Best</div>
+                <div class="scrollable h-[80%] mt-[10px] mb-0 w-full flex overflow-x-scroll overflow-y-hidden">
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/kollywood.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">Kollywood Cream</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/kollywood.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">Kollywood Cream</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/kollywood.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">Kollywood Cream</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/kollywood.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">Kollywood Cream</div>
+                    </div>
+                    <div class="scrollable-eles h-[215px] w-[175px] flex-shrink-0">
+                        <img class="h-[150px] w-[150px] rounded-[5px]" src="assets/kollywood.jpg">
+                        <div class="album-name text-white font-medium text-md mt-[5px]">Kollywood Cream</div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    
+        <div class="above-footer text-white ml-[20px] mt-[40px] md:hidden block">
+            <div class="first mb-[40px]">
+                <div class="company font-bold my-[10px]">Company</div>
+                <div class="about my-[10px] text-[#bebebe]">About</div>
+                <div class="jobs my-[10px] text-[#bebebe]">Jobs</div>
+                <div class="fortherecord my-[10px] text-[#bebebe]">For the Record</div>
+            </div>
+            <div class="second mb-[40px]">
+                <div class="communities font-bold my-[10px]">Communitites</div>
+                <div class="forartists my-[10px] text-[#bebebe]">For Artists</div>
+                <div class="developers my-[10px] text-[#bebebe]">Developers</div>
+                <div class="advertising my-[10px] text-[#bebebe]">Advertising</div>
+                <div class="investors my-[10px] text-[#bebebe]">Investors</div>
+                <div class="vendors my-[10px] text-[#bebebe]">Vendors</div>
+            </div>
+            <div class="third mb-[40px]">
+                <div class="usefullinks font-bold my-[10px]">Useful links</div>
+                <div class="support my-[10px] text-[#bebebe]">Support</div>
+                <div class="freemobileapp my-[10px] text-[#bebebe]">Free Mobile App</div>
+            </div>
+            <div class="fourth mb-[40px]">
+                <div class="spotifyplans font-bold my-[10px]">Spotify Plans</div>
+                <div class="premiumindividual my-[10px] text-[#bebebe]">Premium Individual</div>
+                <div class="premiumduo my-[10px] text-[#bebebe]">Premium Duo</div>
+                <div class="premiumfamily my-[10px] text-[#bebebe]">Premium Family</div>
+                <div class="premiumstudent my-[10px] text-[#bebebe]">Premium Student</div>
+                <div class="spotifyfree my-[10px] text-[#bebebe]">Spotify Free</div>
+            </div>
+        </div>
+    
+        <div class="social flex space-x-[10px] ml-[20px] my-[40px] md:hidden block">
+            <img src="assets/instagram.png" class="bg-[#808080] h-[30px] w-[30px] rounded-full">
+            <img src="assets/twitter.png" class="bg-[#808080] h-[30px] w-[30px] rounded-full">
+            <img src="assets/facebook.png" class="bg-[#808080] h-[30px] w-[30px] rounded-full">
+        </div>
+    
+        <div class="flex items-center justify-center md:hidden block">
+            <hr class="opacity-60 w-[90%] my-[30px]">
+        </div>
+          
+        <footer class="text-[#bebebe] ml-[20px] my-[5px] text-sm space-y-[12px] md:hidden block">
+            <div class="first flex space-x-4">
+                <div class="legal">Legal</div>
+                <div class="spc">Safety & Privacy Center</div>
+                <div class="pp">Privacy Policy</div>
+                <div class="cookies">Cookies</div>
+            </div>
+            <div class="second flex space-x-4">
+                <div class="aa">About Ads</div>
+                <div class="acc">Accessbility</div>
+            </div>
+            <div class="third">©2025 Spotify AB</div>
+            <div class="fourth text-white border-2 border-[#bebebe] rounded-[40px] h-[30px] w-[100px] flex justify-center items-center [10px]">English</div>
+        </footer>
+    </div>
+    
+    <!-- pc view -->
+    <div class="main-body main-body-pc mt-[10px] h-screen mx-[5px] md:flex space-x-[10px] md:relative z-10 hidden md:block">
+
+        <div class="now-playing h-32 w-screen md:absolute md:z-20 md:bottom-0 md:bg-black text-white md:flex md:justify-between">
+            <div class="now-playing-left flex my-[10px] ml-[10px]">
+                <div class="cover h-[40px] w-[40px]">
+                    <img src="assets/kurchi.jpg" class="cover-image rounded-[5px]">
+                </div>
+                <div class="playlist-details ml-[10px]">
+                    <div class="playlist-name text-sm font-semibold">Kurchi Madathapetti</div>
+                    <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                        <p class="playlist-type text-xs">Thaman S</p>
+                    </div>
+                </div>
+                <div class="plus h-16 w-8 ml-2 -mt-2 flex justify-center items-center">
+                    <img src="assets/plus.png" class="h-4 w-4">
+                </div>
+            </div>
+
+            <div class="now-playing-middle h-full w-[30%] flex flex-col">
+                <div class="play-buttons flex justify-center space-x-4 items-center">
+                    <img src="assets/shuffle.png" class="h-[14px] w-[14px] cursor-pointer">
+                    <img src="assets/play-left.png" class="h-[18px] w-[18px] cursor-pointer">
+                    <img src="assets/play.png" class="h-[40px] w-[40px] cursor-pointer">
+                    <img src="assets/play-right.png" class="h-[18px] w-[18px] cursor-pointer">
+                    <img src="assets/repeat.png" class="h-[16px] w-[16px] cursor-pointer">
+                </div>
+                <div class="play-bar flex items-center space-x-1 ml-8 w-full">
+                    <div class="text-xs text-[#999999]">3:40</div>
+                    <div class="relative h-1 w-[80%] bg-[#4d4d4d] rounded-md overflow-hidden">
+                      <div class="absolute top-0 left-0 h-full bg-white animate-fillBar hover:bg-green-500 cursor-pointer"></div>
+                      <div class="absolute top-[-4px] h-1 w-1 bg-white rounded-r-full animate-moveToEnd hover:bg-green-500 cursor-pointer"></div>
+                    </div>
+                    <div class="text-xs text-[#999999]">4:21</div>
+                  </div>
+                  
+                  
+            </div>
+
+            <div class="now-playing-right h-full w-[20%] flex space-x-2 items-center">
+                <div class="right">
+                    <img src="assets/play-square.png" class="h-[20px] w-[20px] mb-16 cursor-pointer">
+                </div>
+                <div class="right">
+                    <img src="assets/mike.png" class="h-[20px] w-[20px] mb-16 cursor-pointer">
+                </div>
+                <div class="right">
+                    <img src="assets/queue.png" class="h-[20px] w-[20px] mb-16 cursor-pointer">
+                </div>
+                <div class="right">
+                    <img src="assets/device.png" class="h-[20px] w-[20px] mb-16 cursor-pointer">
+                </div>
+                <div class="right">
+                    <img src="assets/mute.png" class="h-[20px] w-[20px] mb-16 cursor-pointer">
+                </div>
+                <div class="right w-32 mb-16 h-1 bg-[#4d4d4d]">
+                    <div class="sound h-full w-[40%] bg-white hover:bg-green-500 cursor-pointer cursor-pointer"></div>
+                </div>
+                <div class="right">
+                    <img src="assets/miniplayer.png" class="h-[20px] w-[20px] mb-16 cursor-pointer">
+                </div>
+                <div class="right">
+                    <img src="assets/fullscreen.png" class="h-[20px] w-[20px] mb-16 cursor-pointer">
+                </div>
+            </div>
+        </div>
+    
+        <div class="first bg-[#121212] text-white min-w-[350px] w-[350px] h-screen resize-x overflow-auto rounded-[10px]">
+            <div class="first-nav flex justify-between items-center px-[10px] pt-[15px]">
+                <div class="your-lib font-bold text-[13px]">Your Library</div>
+                <div class="create-expand flex justify-between w-[35%] h-[30px]">
+                    <div
+                        class="create h-full w-[70%] bg-[#1f1f1f] rounded-[40px] font-bold text-[13px] flex justify-center items-center hover:bg-[#2a2a2a] cursor-pointer">
+                        + Create</div>
+                    <div
+                        class="expand h-[12px] w-[12px] flex justify-center items-center mt-[8px] rounded-full hover:bg-[#1f1f1f] cursor-pointer">
+                        <img src="assets/expand.png" class="">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="first-nav2 text-white flex h-[30px] mt-[10px]">
+                <div
+                    class="playlist h-full w-[22%] bg-[#1f1f1f] rounded-[40px] font-bold text-xs flex justify-center items-center hover:bg-[#2a2a2a] cursor-pointer mr-[5px]">
+                    Playlists</div>
+                <div
+                    class="podcasts-shows h-full w-[40%] bg-[#1f1f1f] rounded-[40px] font-bold text-xs flex justify-center items-center hover:bg-[#2a2a2a] cursor-pointer">
+                    Podcasts & Shows</div>
+            </div>
+    
+            <div class="first-nav3 mt-[10px] flex justify-between items-center px-[10px]">
+                <div
+                    class="nav3-search h-[25px] w-[25px] rounded-full flex justify-center items-center hover:bg-[#2a2a2a] cursor-pointer">
+                    <img src="assets/search.png" class=" h-[15px] w-[15px]">
+                </div>
+                <div class="recents group flex justify-between items-center w-[28%] cursor-pointer hover:scale-[1.05]">
+                    <div class="recents-text text-xs font-bold text-[#666666] group-hover:text-white">Recents</div>
+                    <img class="h-[15px] w-[15px]" src="assets/menu.png">
+                </div>
+            </div>
+    
+            <div class="playlists ml-[10px] mt-[15px]">
+                <div class="playlist-single hover:bg-[#4d4d4d] cursor-pointer flex my-[10px]">
+                    <div class="cover h-[40px] w-[40px]">
+                        <img src="assets/liked.jpg" class="cover-image rounded-[5px]">
+                    </div>
+                    <div class="playlist-details ml-[10px]">
+                        <div class="playlist-name text-sm font-semibold">Liked Songs</div>
+                        <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                            <p class="playlist-type text-xs">Playlist</p>
+                            <div class="dot bg-[url(assets/dot.png)] bg-contain h-[10px] w-[10px] mt-[4px]"></div>
+                            <div class="artist-name text-xs">20 songs</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="playlist-single hover:bg-[#4d4d4d] cursor-pointer flex my-[10px]">
+                    <div class="cover h-[40px] w-[40px]">
+                        <img src="assets/lofi.jpg" class="cover-image rounded-[5px]">
+                    </div>
+                    <div class="playlist-details ml-[10px]">
+                        <div class="playlist-name text-sm font-semibold">Lofi Beats</div>
+                        <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                            <p class="playlist-type text-xs">Playlist</p>
+                            <div class="dot bg-[url(assets/dot.png)] bg-contain h-[10px] w-[10px] mt-[4px]"></div>
+                            <div class="artist-name text-xs">Spotify</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="playlist-single hover:bg-[#4d4d4d] cursor-pointer flex my-[10px]">
+                    <div class="cover h-[40px] w-[40px]">
+                        <img src="assets/brainleak.jpg" class="cover-image rounded-[5px]">
+                    </div>
+                    <div class="playlist-details ml-[10px]">
+                        <div class="playlist-name text-sm font-semibold">Brain Leak</div>
+                        <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                            <p class="playlist-type text-xs">Podcast</p>
+                            <div class="dot bg-[url(assets/dot.png)] bg-contain h-[10px] w-[10px] mt-[4px]"></div>
+                            <div class="artist-name text-xs">Wood Elf Media</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="playlist-single hover:bg-[#4d4d4d] cursor-pointer flex my-[10px]">
+                    <div class="cover h-[40px] w-[40px]">
+                        <img src="assets/claire.jpg" class="cover-image rounded-[5px]">
+                    </div>
+                    <div class="playlist-details ml-[10px]">
+                        <div class="playlist-name text-sm font-semibold">Claire Rosinkranz</div>
+                        <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                            <p class="playlist-type text-xs">Artist</p>
+                            <div class="dot bg-[url(assets/dot.png)] bg-contain h-[10px] w-[10px] mt-[4px]"></div>
+                            <div class="artist-name text-xs">20 songs</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="playlist-single hover:bg-[#4d4d4d] cursor-pointer flex my-[10px]">
+                    <div class="cover h-[40px] w-[40px]">
+                        <img src="assets/paulsimon.jpg" class="cover-image rounded-[5px]">
+                    </div>
+                    <div class="playlist-details ml-[10px]">
+                        <div class="playlist-name text-sm font-semibold">Paul Simon</div>
+                        <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                            <p class="playlist-type text-xs">Album</p>
+                            <div class="dot bg-[url(assets/dot.png)] bg-contain h-[10px] w-[10px] mt-[4px]"></div>
+                            <div class="artist-name text-xs">Paul Simon</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="playlist-single hover:bg-[#4d4d4d] cursor-pointer flex my-[10px]">
+                    <div class="cover h-[40px] w-[40px]">
+                        <img src="assets/discoverweekly.jpg" class="cover-image rounded-[5px]">
+                    </div>
+                    <div class="playlist-details ml-[10px]">
+                        <div class="playlist-name text-sm font-semibold">Discover Weekly</div>
+                        <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                            <p class="playlist-type text-xs">Playlist</p>
+                            <div class="dot bg-[url(assets/dot.png)] bg-contain h-[10px] w-[10px] mt-[4px]"></div>
+                            <div class="artist-name text-xs">Spotify</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="playlist-single hover:bg-[#4d4d4d] cursor-pointer flex my-[10px]">
+                    <div class="cover h-[40px] w-[40px]">
+                        <img src="assets/bollywooddance.jpg" class="cover-image rounded-[5px]">
+                    </div>
+                    <div class="playlist-details ml-[10px]">
+                        <div class="playlist-name text-sm font-semibold">Bollywood Dance Music</div>
+                        <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                            <p class="playlist-type text-xs">Playlist</p>
+                            <div class="dot bg-[url(assets/dot.png)] bg-contain h-[10px] w-[10px] mt-[4px]"></div>
+                            <div class="artist-name text-xs">Spotify</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="playlist-single hover:bg-[#4d4d4d] cursor-pointer flex my-[10px]">
+                    <div class="cover h-[40px] w-[40px]">
+                        <img src="assets/coastaldrive.jpg" class="cover-image rounded-[5px]">
+                    </div>
+                    <div class="playlist-details ml-[10px]">
+                        <div class="playlist-name text-sm font-semibold">Coastal Drive</div>
+                        <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                            <p class="playlist-type text-xs">Playlist</p>
+                            <div class="dot bg-[url(assets/dot.png)] bg-contain h-[10px] w-[10px] mt-[4px]"></div>
+                            <div class="artist-name text-xs">Spotify</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="playlist-single hover:bg-[#4d4d4d] cursor-pointer flex my-[10px]">
+                    <div class="cover h-[40px] w-[40px]">
+                        <img src="assets/goodfeeling80s.jpg" class="cover-image rounded-[5px]">
+                    </div>
+                    <div class="playlist-details ml-[10px]">
+                        <div class="playlist-name text-sm font-semibold">Good Feeling 80s</div>
+                        <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                            <p class="playlist-type text-xs">Playlist</p>
+                            <div class="dot bg-[url(assets/dot.png)] bg-contain h-[10px] w-[10px] mt-[4px]"></div>
+                            <div class="artist-name text-xs">Spotify</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="playlist-single hover:bg-[#4d4d4d] cursor-pointer flex my-[10px]">
+                    <div class="cover h-[40px] w-[40px]">
+                        <img src="assets/ethelcain.jpg" class="cover-image rounded-[5px]">
+                    </div>
+                    <div class="playlist-details ml-[10px]">
+                        <div class="playlist-name text-sm font-semibold">Ethel Cain</div>
+                        <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                            <p class="playlist-type text-xs">Artist</p>
+                            <div class="dot bg-[url(assets/dot.png)] bg-contain h-[10px] w-[10px] mt-[4px]"></div>
+                            <div class="artist-name text-xs">20 songs</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="playlist-single hover:bg-[#4d4d4d] cursor-pointer flex my-[10px]">
+                    <div class="cover h-[40px] w-[40px]">
+                        <img src="assets/happymix.jpg" class="cover-image rounded-[5px]">
+                    </div>
+                    <div class="playlist-details ml-[10px]">
+                        <div class="playlist-name text-sm font-semibold">Happy Mix</div>
+                        <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                            <p class="playlist-type text-xs">Playlist</p>
+                            <div class="dot bg-[url(assets/dot.png)] bg-contain h-[10px] w-[10px] mt-[4px]"></div>
+                            <div class="artist-name text-xs">Spotify</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="playlist-single hover:bg-[#4d4d4d] cursor-pointer flex my-[10px]">
+                    <div class="cover h-[40px] w-[40px]">
+                        <img src="assets/rapcavier.jpg" class="cover-image rounded-[5px]">
+                    </div>
+                    <div class="playlist-details ml-[10px]">
+                        <div class="playlist-name text-sm font-semibold">The RapCaviar Podcast</div>
+                        <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                            <p class="playlist-type text-xs">Podcast</p>
+                            <div class="dot bg-[url(assets/dot.png)] bg-contain h-[10px] w-[10px] mt-[4px]"></div>
+                            <div class="artist-name text-xs">Spotify Studios</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="playlist-single hover:bg-[#4d4d4d] cursor-pointer flex my-[10px]">
+                    <div class="cover h-[40px] w-[40px]">
+                        <img src="assets/biginternet.jpg" class="cover-image rounded-[5px]">
+                    </div>
+                    <div class="playlist-details ml-[10px]">
+                        <div class="playlist-name text-sm font-semibold">big on the internet</div>
+                        <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                            <p class="playlist-type text-xs">Playlist</p>
+                            <div class="dot bg-[url(assets/dot.png)] bg-contain h-[10px] w-[10px] mt-[4px]"></div>
+                            <div class="artist-name text-xs">Spotify Studios</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="playlist-single hover:bg-[#4d4d4d] cursor-pointer flex my-[10px]">
+                    <div class="cover h-[40px] w-[40px]">
+                        <img src="assets/moonracer.jpg" class="cover-image rounded-[5px]">
+                    </div>
+                    <div class="playlist-details ml-[10px]">
+                        <div class="playlist-name text-sm font-semibold">Moonracer</div>
+                        <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                            <p class="playlist-type text-xs">Album</p>
+                            <div class="dot bg-[url(assets/dot.png)] bg-contain h-[10px] w-[10px] mt-[4px]"></div>
+                            <div class="artist-name text-xs">Tommi Waring</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="playlist-single hover:bg-[#4d4d4d] cursor-pointer flex my-[10px]">
+                    <div class="cover h-[40px] w-[40px]">
+                        <img src="assets/moderntimes.jpg" class="cover-image rounded-[5px]">
+                    </div>
+                    <div class="playlist-details ml-[10px]">
+                        <div class="playlist-name text-sm font-semibold">Modern Times</div>
+                        <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                            <p class="playlist-type text-xs">Album</p>
+                            <div class="dot bg-[url(assets/dot.png)] bg-contain h-[10px] w-[10px] mt-[4px]"></div>
+                            <div class="artist-name text-xs">Bonomi</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="playlist-single hover:bg-[#4d4d4d] cursor-pointer flex my-[10px]">
+                    <div class="cover h-[40px] w-[40px]">
+                        <img src="assets/paunulaisissa.jpg" class="cover-image rounded-[5px]">
+                    </div>
+                    <div class="playlist-details ml-[10px]">
+                        <div class="playlist-name text-sm font-semibold">Paunulaisissa</div>
+                        <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                            <p class="playlist-type text-xs">Album</p>
+                            <div class="dot bg-[url(assets/dot.png)] bg-contain h-[10px] w-[10px] mt-[4px]"></div>
+                            <div class="artist-name text-xs">vaajy</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="playlist-single hover:bg-[#4d4d4d] cursor-pointer flex my-[10px]">
+                    <div class="cover h-[40px] w-[40px]">
+                        <img src="assets/peacefulpiano.jpg" class="cover-image rounded-[5px]">
+                    </div>
+                    <div class="playlist-details ml-[10px]">
+                        <div class="playlist-name text-sm font-semibold">Peaceful Piano</div>
+                        <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                            <p class="playlist-type text-xs">Playlist</p>
+                            <div class="dot bg-[url(assets/dot.png)] bg-contain h-[10px] w-[10px] mt-[4px]"></div>
+                            <div class="artist-name text-xs">Spotify</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="playlist-single hover:bg-[#4d4d4d] cursor-pointer flex my-[10px]">
+                    <div class="cover h-[40px] w-[40px]">
+                        <img src="assets/popmix.jpg" class="cover-image rounded-[5px]">
+                    </div>
+                    <div class="playlist-details ml-[10px]">
+                        <div class="playlist-name text-sm font-semibold">Pop Mix</div>
+                        <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                            <p class="playlist-type text-xs">Playlist</p>
+                            <div class="dot bg-[url(assets/dot.png)] bg-contain h-[10px] w-[10px] mt-[4px]"></div>
+                            <div class="artist-name text-xs">Spotify</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="playlist-single hover:bg-[#4d4d4d] cursor-pointer flex my-[10px]">
+                    <div class="cover h-[40px] w-[40px]">
+                        <img src="assets/latenights.jpg" class="cover-image rounded-[5px]">
+                    </div>
+                    <div class="playlist-details ml-[10px]">
+                        <div class="playlist-name text-sm font-semibold">late nights | dynmk</div>
+                        <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                            <p class="playlist-type text-xs">Playlist</p>
+                            <div class="dot bg-[url(assets/dot.png)] bg-contain h-[10px] w-[10px] mt-[4px]"></div>
+                            <div class="artist-name text-xs">dynmkofficial</div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+    
+            <div class="lorem text-transparent">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quo
+                veritatis deserunt officiis earum tenetur quod natus.Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </div>
+        </div>
+    
+        <div class="second bg-[#121212] text-white min-w-[980px] w-[980px] h-screen resize-x overflow-auto rounded-[10px] z-10"
+            style="background: linear-gradient(to bottom, #3b4147 0%, #2f3338 5%, #1f2225 10%, #121212 20%);">
+    
+            <div class="second-nav flex mt-[10px] ml-[25px] space-x-[10px]">
+                <div class="all text-xs font-semibold bg-[#4a4f54] hover:bg-[#5a5f64] cursor-pointer h-[30px] w-auto min-w-[40px] px-[10px] flex justify-center items-center rounded-[20px]">
+                    All</div>
+                <div class="music text-xs font-semibold bg-[#4a4f54] hover:bg-[#5a5f64] cursor-pointer h-[30px] w-auto min-w-[40px] px-[10px] flex justify-center items-center rounded-[20px]">
+                    Music</div>
+                <div class="podcasts text-xs font-semibold bg-[#4a4f54] hover:bg-[#5a5f64] cursor-pointer h-[30px] w-auto min-w-[40px] px-[10px] flex justify-center items-center rounded-[20px]">
+                    Podcasts</div>
+            </div>
+    
+            <div class="recently-played grid grid-cols-4 gap-2 mt-[20px] ml-[25px] w-[925px]">
+                <div class="recenty-played-album h-[50px] w-[220px] rounded-[5px] flex bg-[#4a4f54] hover:bg-[#5a5f64] cursor-pointer">
+                    <div class="recently-played-album-cover">
+                        <img src="assets/mb.jpg" class="h-[48px] w-[45px] rounded-l-[5px]">
+                    </div>
+                    <div class="recently-played-album-name flex items-center ml-[5px] text-xs font-semibold">Mahesh Babu[All Movie Songs]</div>
+                </div>
+                <div class="recenty-played-album h-[50px] w-[220px] rounded-[5px] flex bg-[#4a4f54] hover:bg-[#5a5f64] cursor-pointer">
+                    <div class="recently-played-album-cover">
+                        <img src="assets/happymix.jpg" class=" h-[48px] w-[45px] rounded-l-[5px]">
+                    </div>
+                    <div class="recently-played-album-name flex items-center ml-[5px] text-xs font-semibold">Happy Mix</div>
+                </div>
+                <div class="recenty-played-album h-[50px] w-[220px] rounded-[5px] flex bg-[#4a4f54] hover:bg-[#5a5f64] cursor-pointer">
+                    <div class="recently-played-album-cover">
+                        <img src="assets/bollywoodmush.jpg" class="h-[48px] w-[45px] rounded-l-[5px]">
+                    </div>
+                    <div class="recently-played-album-name flex items-center ml-[5px] text-xs font-semibold">Bollywood Mush
+                    </div>
+                </div>
+                <div class="recenty-played-album h-[50px] w-[220px] rounded-[5px] flex bg-[#4a4f54] hover:bg-[#5a5f64] cursor-pointer">
+                    <div class="recently-played-album-cover">
+                        <img src="assets/dailymix3.jpg" class="h-[48px] w-[45px] rounded-l-[5px]">
+                    </div>
+                    <div class="recently-played-album-name flex items-center ml-[5px] text-xs font-semibold">Daily Mix 3
+                    </div>
+                </div>
+                <div class="recenty-played-album h-[50px] w-[220px] rounded-[5px] flex bg-[#4a4f54] hover:bg-[#5a5f64] cursor-pointer">
+                    <div class="recently-played-album-cover">
+                        <img src="assets/arrahman.jpg" class="h-[48px] w-[45px] rounded-l-[5px]">
+                    </div>
+                    <div class="recently-played-album-name flex items-center ml-[5px] text-xs font-semibold">Daily Mix 1
+                    </div>
+                </div>
+                <div class="recenty-played-album h-[50px] w-[220px] rounded-[5px] flex bg-[#4a4f54] hover:bg-[#5a5f64] cursor-pointer">
+                    <div class="recently-played-album-cover">
+                        <img src="assets/peacefulpiano.jpg" class="h-[48px] w-[45px] rounded-l-[5px]">
+                    </div>
+                    <div class="recently-played-album-name flex items-center ml-[5px] text-xs font-semibold">Peaceful Piano
+                    </div>
+                </div>
+                <div class="recenty-played-album h-[50px] w-[220px] rounded-[5px] flex bg-[#4a4f54] hover:bg-[#5a5f64] cursor-pointer">
+                    <div class="recently-played-album-cover">
+                        <img src="assets/latenights.jpg" class="h-[48px] w-[45px] rounded-l-[5px]">
+                    </div>
+                    <div class="recently-played-album-name flex items-center ml-[5px] text-xs font-semibold">late nights | dynmk</div>
+                </div>
+                <div class="recenty-played-album h-[50px] w-[220px] rounded-[5px] flex bg-[#4a4f54] hover:bg-[#5a5f64] cursor-pointer">
+                    <div class="recently-played-album-cover">
+                        <img src="assets/znmd.jpg" class="h-[48px] w-[45px] rounded-l-[5px]">
+                    </div>
+                    <div class="recently-played-album-name flex items-center ml-[5px] text-xs font-semibold">Zindagi Na Milegi Dobara</div>
+                </div>
+            </div>
+    
+            <div class="made-for-you text-white ml-[25px] mt-[40px]">
+                <div class="label">
+                    <div class="made-for text-[11px]">Made For</div>
+                    <div class="you-show-all flex justify-between ">
+                        <div class="you text-2xl font-bold hover:underline cursor-pointer">You</div>
+                        <div class="show-all text-xs text-[#999999] font-bold hover:underline cursor-pointer mr-[20px]">Show all</div>
+                    </div>
+                </div>
+    
+                <div class="lists relative w-full">
+                    <button id="left-button"
+                        class="left-button absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-[#1f1f1f] text-white px-2 py-1 hover:bg-[#2a2a2a] rounded-full h-[30px] w-[30px] flex justify-center items-center hidden">‹</button>
+                    <button id="right-button"
+                        class="right-button absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-[#1f1f1f] text-white px-2 py-1 hover:bg-[#2a2a2a] rounded-full h-[30px] w-[30px] flex justify-center items-center hidden">›</button>
+    
+                    <div id="made-for-you-albums"
+                        class="made-for-you-albums w-full h-auto flex overflow-x-auto scrollbar-hide mt-[10px] cursor-pointer">
+    
+                        <div
+                            class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div class="inside-div h-[81%] w-[90%] bg-[url(assets/thaman.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg"
+                                        class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div class="details h-[15%] w-[90%] text-xs text-[#999999]">Thaman S, S.P. Balasubramanyam...
+                            </div>
+                        </div>
+                        <div
+                            class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div class="inside-div h-[81%] w-[90%] bg-[url(assets/thaman.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg"
+                                        class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div class="details h-[15%] w-[90%] text-xs text-[#999999]">Thaman S, Devi Sri Prasad, Karthik
+                                and more</div>
+                        </div>
+                        <div
+                            class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div class="inside-div h-[81%] w-[90%] bg-[url(assets/arrahman.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg"
+                                        class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div class="details h-[15%] w-[90%] text-xs text-[#999999]">A.R.Rahman, Harri Jayaraj, Anirudh
+                                Ravichander</div>
+                        </div>
+                        <div
+                            class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div class="inside-div h-[81%] w-[90%] bg-[url(assets/pritam.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg"
+                                        class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div class="details h-[15%] w-[90%] text-xs text-[#999999]">Pritam, Himesh Reshammiya, Harrdy
+                                Sandhu</div>
+                        </div>
+                        <div
+                            class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div
+                                class="inside-div h-[81%] w-[90%] bg-[url(assets/discoverweekly.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg"
+                                        class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div class="details h-[15%] w-[90%] text-xs text-[#999999]">Your weekly mixtape of fresh music.
+                                Enjoy new...</div>
+                        </div>
+                        <div
+                            class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div class="inside-div h-[81%] w-[90%] bg-[url(assets/chinmayi.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg"
+                                        class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div class="details h-[15%] w-[90%] text-xs text-[#999999]">Catch all the latest music from
+                                artists you follow...</div>
+                        </div>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+            <div class="jump-back-in text-white ml-[25px] mt-[40px]">
+                <div class="label">
+                    <div class="you-show-all flex justify-between ">
+                        <div class="you text-2xl font-bold hover:underline cursor-pointer">Jump back in</div>
+                        <div class="show-all text-xs text-[#999999] font-bold hover:underline cursor-pointer mr-[20px]">Show
+                            all</div>
+                    </div>
+                </div>
+    
+                <div class="lists relative w-full">
+                    <button id="left-button2"
+                        class="left-button absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-[#1f1f1f] text-white px-2 py-1 hover:bg-[#2a2a2a] rounded-full h-[30px] w-[30px] flex justify-center items-center hidden">‹</button>
+                    <button id="right-button2"
+                        class="right-button absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-[#1f1f1f] text-white px-2 py-1 hover:bg-[#2a2a2a] rounded-full h-[30px] w-[30px] flex justify-center items-center hidden">›</button>
+    
+                    <div id="made-for-you-albums" class="made-for-you-albums w-full h-auto flex overflow-x-auto scrollbar-hide mt-[10px] cursor-pointer overflow-y-hidden">
+    
+                        <div class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div class="inside-div h-[81%] w-[90%] bg-[url(assets/00s.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg" class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div class="details h-[15%] w-[90%] text-xs text-[#999999]">Fall in love with 00's Bollywood like never before! Cover - Bachna Ae Haseeno</div>
+                        </div>
+                        <div class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div class="inside-div h-[81%] w-[90%] bg-[url(assets/latestdancetamil.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg" class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div class="details h-[15%] w-[90%] text-xs text-[#999999]">Dance Machi Dance Cover:Retro</div>
+                        </div>
+                        <div class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div class="inside-div h-[81%] w-[90%] bg-[url(assets/guzaarish.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg" class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div class="details h-[15%] w-[90%] text-xs text-[#999999]">Sanjay Leela Bhansali</div>
+                        </div>
+                        <div class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div class="inside-div h-[81%] w-[90%] bg-[url(assets/arijitsingh.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg" class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div class="details h-[15%] w-[90%] text-xs text-[#999999]">Presenting ❤️‍🩹 to you guy's Arijit
+                                Singh All happy 😊 & sad 😢 songs!</div>
+                        </div>
+                        <div class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div class="inside-div h-[81%] w-[90%] bg-[url(assets/thisischarlieputh.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg" class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div class="details h-[15%] w-[90%] text-xs text-[#999999]">This is Charlie Puth. The essential
+                                tracks, all in one playlist.</div>
+                        </div>
+                        <div class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div class="inside-div h-[81%] w-[90%] bg-[url(assets/relaxingragas.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg" class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div class="details h-[15%] w-[90%] text-xs text-[#999999]">Beautiful bansuri flute and sitar from India.</div>
+                        </div>
+                        <div class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div class="inside-div h-[81%] w-[90%] bg-[url(assets/astroworld.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg" class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div class="details h-[15%] w-[90%] text-xs text-[#999999]">Travis Scott</div>
+                        </div>
+                        <div class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div class="inside-div h-[81%] w-[90%] bg-[url(assets/peacefulpiano.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg" class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div class="details h-[15%] w-[90%] text-xs text-[#999999]">Peaceful piano to help you slow down, breathe, and relax.</div>
+                        </div>
+                        <div class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div class="inside-div h-[81%] w-[90%] bg-[url(assets/rockstardsp.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg" class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div class="details h-[15%] w-[90%] text-xs text-[#999999]">Dsp Remix</div>
+                        </div>
+    
+                    </div>
+    
+                </div>
+            </div>
+    
+            <div class="recently-played text-white ml-[25px] mt-[40px]">
+                <div class="label">
+                    <div class="you-show-all flex justify-between ">
+                        <div class="you text-2xl font-bold hover:underline cursor-pointer">Recently Played</div>
+                        <div class="show-all text-xs text-[#999999] font-bold hover:underline cursor-pointer mr-[20px]">Show all</div>
+                    </div>
+                </div>
+    
+                <div class="lists relative w-full overflow-y-hidden">
+                    <button id="left-button2" class="left-button absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-[#1f1f1f] text-white px-2 py-1 hover:bg-[#2a2a2a] rounded-full h-[30px] w-[30px] flex justify-center items-center hidden">‹</button>
+                    <button id="right-button2" class="right-button absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-[#1f1f1f] text-white px-2 py-1 hover:bg-[#2a2a2a] rounded-full h-[30px] w-[30px] flex justify-center items-center hidden">›</button>
+    
+                    <div id="made-for-you-albums" class="made-for-you-albums w-full h-auto flex overflow-x-auto scrollbar-hide mt-[10px] cursor-pointer overflow-y-hidden">
+    
+                        <div
+                            class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div class="inside-div h-[81%] w-[90%] bg-[url(assets/mb.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg"
+                                        class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div
+                                class="details h-[15%] w-[90%] text-xs text-white hover:underline cursor-pointer font-semibold mt-2px">
+                                Mahesh Babu [All Movie Songs]</div>
+                        </div>
+                        <div
+                            class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div class="inside-div h-[81%] w-[90%] bg-[url(assets/koinaa.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg"
+                                        class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div
+                                class="details h-[15%] w-[90%] text-xs text-white hover:underline cursor-pointer font-semibold mt-2px">
+                                Koi Naa(From "Bhool Chuk Maaf")</div>
+                        </div>
+                        <div
+                            class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div
+                                class="inside-div h-[81%] w-[90%] bg-[url(assets/allout10stelugu.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg"
+                                        class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div
+                                class="details h-[15%] w-[90%] text-xs text-white hover:underline cursor-pointer font-semibold mt-2px">
+                                All Out 10s Telugu</div>
+                        </div>
+                        <div
+                            class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div
+                                class="inside-div h-[81%] w-[90%] bg-[url(assets/happymixarijit.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg"
+                                        class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div
+                                class="details h-[15%] w-[90%] text-xs text-white hover:underline cursor-pointer font-semibold mt-2px">
+                                Happy Mix</div>
+                        </div>
+                        <div
+                            class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div class="inside-div h-[81%] w-[90%] bg-[url(assets/musicnote.png)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg"
+                                        class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div
+                                class="details h-[15%] w-[90%] text-xs text-white hover:underline cursor-pointer font-semibold mt-2px">
+                                Harris Jayaraj Telugu Hits</div>
+                        </div>
+                        <div
+                            class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div
+                                class="inside-div h-[81%] w-[90%] bg-[url(assets/bollywoodmush.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg"
+                                        class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div
+                                class="details h-[15%] w-[90%] text-xs text-white hover:underline cursor-pointer font-semibold mt-2px">
+                                Bollywood Mush</div>
+                        </div>
+                        <div
+                            class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div class="inside-div h-[81%] w-[90%] bg-[url(assets/pritam.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg"
+                                        class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div
+                                class="details h-[15%] w-[90%] text-xs text-white hover:underline cursor-pointer font-semibold mt-2px">
+                                Daily Mix 3</div>
+                        </div>
+                        <div
+                            class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div class="inside-div h-[81%] w-[90%] bg-[url(assets/arrahman.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg"
+                                        class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div
+                                class="details h-[15%] w-[90%] text-xs text-white hover:underline cursor-pointer font-semibold mt-2px">
+                                Daily Mix 1</div>
+                        </div>
+                        <div
+                            class="made-for-you-album group h-[200px] w-[180px] flex-shrink-0 flex flex-col justify-center items-center hover:bg-[#1f1f1f] z-10 rounded-[5px]">
+                            <div class="inside-div h-[81%] w-[90%] bg-[url(assets/znmd.jpg)] bg-cover rounded-[5px]">
+                                <div class="green-play relative h-full w-full hidden group-hover:block">
+                                    <img src="assets/greenplay.jpg"
+                                        class="h-[40px] w-[40px] absolute bottom-2 right-2 rounded-full hover:scale-[1.05]">
+                                </div>
+                            </div>
+                            <div
+                                class="details h-[15%] w-[90%] text-xs text-white hover:underline cursor-pointer font-semibold mt-2px">
+                                Zindagi Na Milegi Dobara</div>
+                        </div>
+    
+                    </div>
+    
+                </div>
+            </div>
+
+            <footer class="second-footer text-sm">
+                <div class="above-footer text-white ml-[20px] mt-[40px] md:flex md:justify-between">
+                    <div class="first mb-[40px]">
+                        <div class="company font-bold my-[10px]">Company</div>
+                        <div class="about my-[10px] text-[#bebebe] md:font-semibold cursor-pointer hover:underline hover:text-white hover:font-bold">About</div>
+                        <div class="jobs my-[10px] text-[#bebebe] md:font-semibold cursor-pointer hover:underline hover:text-white hover:font-bold">Jobs</div>
+                        <div class="fortherecord my-[10px] text-[#bebebe] md:font-semibold cursor-pointer hover:underline hover:text-white hover:font-bold">For the Record</div>
+                    </div>
+                    <div class="second mb-[40px]">
+                        <div class="communities font-bold my-[10px]">Communitites</div>
+                        <div class="forartists my-[10px] text-[#bebebe] md:font-semibold cursor-pointer hover:underline hover:text-white hover:font-bold">For Artists</div>
+                        <div class="developers my-[10px] text-[#bebebe] md:font-semibold cursor-pointer hover:underline hover:text-white hover:font-bold">Developers</div>
+                        <div class="advertising my-[10px] text-[#bebebe] md:font-semibold cursor-pointer hover:underline hover:text-white hover:font-bold">Advertising</div>
+                        <div class="investors my-[10px] text-[#bebebe] md:font-semibold cursor-pointer hover:underline hover:text-white hover:font-bold">Investors</div>
+                        <div class="vendors my-[10px] text-[#bebebe] md:font-semibold cursor-pointer hover:underline hover:text-white hover:font-bold">Vendors</div>
+                    </div>
+                    <div class="third mb-[40px]">
+                        <div class="usefullinks font-bold my-[10px]">Useful links</div>
+                        <div class="support my-[10px] text-[#bebebe] md:font-semibold cursor-pointer hover:underline hover:text-white hover:font-bold">Support</div>
+                        <div class="freemobileapp my-[10px] text-[#bebebe] md:font-semibold cursor-pointer hover:underline hover:text-white hover:font-bold">Free Mobile App</div>
+                    </div>
+                    <div class="fourth mb-[40px]">
+                        <div class="spotifyplans font-bold my-[10px]">Spotify Plans</div>
+                        <div class="premiumindividual my-[10px] text-[#bebebe] md:font-semibold cursor-pointer hover:underline hover:text-white hover:font-bold">Premium Individual</div>
+                        <div class="premiumduo my-[10px] text-[#bebebe] md:font-semibold cursor-pointer hover:underline hover:text-white hover:font-bold">Premium Duo</div>
+                        <div class="premiumfamily my-[10px] text-[#bebebe] md:font-semibold cursor-pointer hover:underline hover:text-white hover:font-bold">Premium Family</div>
+                        <div class="premiumstudent my-[10px] text-[#bebebe] md:font-semibold cursor-pointer hover:underline hover:text-white hover:font-bold">Premium Student</div>
+                        <div class="spotifyfree my-[10px] text-[#bebebe] md:font-semibold cursor-pointer hover:underline hover:text-white hover:font-bold">Spotify Free</div>
+                    </div>
+                    <div class="fifth mb-[40px] h-14 w-auto">
+                        <img src="assets/social.png" class="h-full w-full">
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-center hidden md:block">
+                    <hr class="opacity-60 w-[90%] my-[30px] mx-auto">
+                </div>
+
+                <div class="text-[#bebebe] ml-[20px] my-[5px] text-xs space-y-[12px] hidden md:block md:flex md:justify-between md:items-center">
+                    <div class="first flex space-x-4">
+                        <div class="legal hover:text-white cursor-pointer">Legal</div>
+                        <div class="spc hover:text-white cursor-pointer">Safety & Privacy Center</div>
+                        <div class="pp hover:text-white cursor-pointer">Privacy Policy</div>
+                        <div class="cookies hover:text-white cursor-pointer">Cookies</div>
+                        <div class="aa hover:text-white cursor-pointer">About Ads</div>
+                        <div class="acc hover:text-white cursor-pointer">Accessbility</div>
+                    </div>
+                    <div class="third mr-[20px]">©2025 Spotify AB</div>
+                </div>
+            </footer>
+    
+            <div class="lorem text-transparent">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus,
+                nostrum aperiam possimus corrupti quasi accusantium quos animi. Excepturi, ea iusto maxime facere corporis
+                fugit labore, laudantium delectus mollitia incidunt animi?
+                Obcaecati, commodi dolorem laborum numquam esse repellendus assumenda, cumque autem, molestiae quo nostrum
+                repudiandae. Dolore sapiente, illum, ab ad maiores illo quos aspernatur reprehenderit voluptatum similique,
+                dolorem fugit sit vel.Dolore sapiente, illum, ab ad maiores illo quos aspernatur reprehenderit voluptatum similique,
+                dolorem fugit sit vel.
+            </div>
+    
+        </div>
+    
+        <div class="third bg-[#121212] w-[340px] h-screen overflow-x-hidden rounded-[10px] text-white">
+            <div class="third-nav font-bold text-sm mt-[20px] ml-[15px]">
+                <span class="cursor-pointer">Guntur Kaaram</span>
+            </div>
+            <div class="playing-song-image h-[310px] w-[310px] mt-[20px] ml-[15px] cursor-pointer">
+                <img src="assets/kurchi.jpg" class="h-full w-full object-cover rounded-[5px]">
+            </div>
+            <div class="w-full title-artists">
+                <div class="playing-song-title text-xl font-bold mt-[10px] ml-[15px] whitespace-nowrap overflow-x-auto cursor-pointer hover:underline animate-marquee inline-block">
+                    Kurchi Madathapetti(From"Guntur Kaaram")("Telugu")
+                </div>
+                <div class="flex text-[#999999] space-x-2 -mt-[10px] ml-[15px]">
+                    <div class="playing-song-title text-sm font-semibold  cursor-pointer hover:underline">
+                        Thaman S
+                    </div>
+                    <div class="playing-song-title text-sm font-semibold cursor-pointer hover:underline">
+                        Saraswati Putra Ramajogayya Sastry
+                    </div>
+                </div>
+            </div>
+            <div class="credits h-[25%] w-[90%] mx-auto mt-[20px] rounded-[5px] bg-[#1f1f1f]">
+                <div class="credits-show-all flex justify-between items-center ml-[10px] mt-[25px] h-[40px]">
+                    <div class="you text-sm font-bold">Credits</div>
+                    <div class="show-all text-xs text-[#999999] font-bold hover:underline cursor-pointer mr-[20px] hover:text-white hover:scale-[1.05]">Show all</div>
+                </div>
+
+                <div class="artist-follow flex justify-between items-center ml-[10px] mt-[10px]">
+                    <div class="you text-sm font-bold">
+                        <div class="artist-name hover:underline cursor-pointer">Thaman S</div>
+                        <div class="artist-type text-xs text-[#999999] font-bold mr-[20px]">Main Artist</div>
+                    </div>
+                    <div class="show-all text-[#dddddd] text-xs h-auto w-auto py-[5px] px-[10px] border border-[#727272] hover:border-[#dddddd] rounded-3xl font-bold cursor-pointer mr-[20px] hover:scale-[1.05]">Follow</div>
+                </div>
+                <div class="artist-follow flex justify-between items-center ml-[10px] mt-[10px]">
+                    <div class="you text-sm font-bold">
+                        <div class="artist-name hover:underline cursor-pointer">Sri Krishna</div>
+                        <div class="artist-type text-xs text-[#999999] font-bold mr-[20px]">Main Artist</div>
+                    </div>
+                    <div class="show-all text-[#dddddd] text-xs h-auto w-auto py-[5px] px-[10px] border border-[#727272] hover:border-[#dddddd] rounded-3xl font-bold cursor-pointer mr-[20px] hover:scale-[1.05]">Follow</div>
+                </div>
+                <div class="artist-follow flex justify-between items-center ml-[10px] mt-[10px]">
+                    <div class="you text-sm font-bold">
+                        <div class="artist-name hover:underline cursor-pointer">Sahithi Chaganti</div>
+                        <div class="artist-type text-xs text-[#999999] font-bold mr-[20px]">Main Artist</div>
+                    </div>
+                    <div class="show-all text-[#dddddd] text-xs h-auto w-auto py-[5px] px-[10px] border border-[#727272] hover:border-[#dddddd] rounded-3xl font-bold cursor-pointer mr-[20px] hover:scale-[1.05]">Follow</div>
+                </div>
+            </div>
+
+            <div class="credits h-[12%] w-[90%] mx-auto mt-[20px] rounded-[5px] bg-[#1f1f1f]">
+                <div class="credits-show-all flex justify-between items-center ml-[10px] mt-[10px] h-[35px]">
+                    <div class="you text-sm font-bold">Next in queue</div>
+                    <div class="show-all text-xs text-[#999999] font-bold hover:underline cursor-pointer mr-[20px] hover:text-white hover:scale-[1.05]">Open queue</div>
+                </div>
+                <div class="playlist-single hover:bg-[#4d4d4d] cursor-pointer flex my-[10px] ml-[10px]">
+                    <div class="cover h-[40px] w-[40px]">
+                        <img src="assets/businessman.jpg" class="cover-image rounded-[5px]">
+                    </div>
+                    <div class="playlist-details ml-[10px]">
+                        <div class="playlist-name text-sm font-semibold">Sir Osthara</div>
+                        <div class="playlist-sub-details flex items-center text-[#999999] font-semibold">
+                            <p class="playlist-type text-xs">Suchitra, Thaman S</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="lorem text-transparent">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus,
+                nostrum aperiam possimus corrupti quasi accusantium quos animi.Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </div>
+        </div>
+    </div>
+        
+        <!-- <div class="try h-[100px] w-[100px] border-2 border-red-400 resize-x scrollable overflow-y-auto"></div> -->
+
+        <script>
+            document.getElementById('menuDiv').addEventListener('click', function () {
+                const hiddenDiv = document.querySelector('.hiddenDiv');
+                hiddenDiv.classList.toggle('hidden');
+            });
+
+            document.getElementById('close-menu').addEventListener('click', function () {
+                const closeMenu = document.querySelector('.hiddenDiv');
+                closeMenu.classList.toggle('hidden');
+            })
+
+            const playlists = document.querySelectorAll('.playlist-single hover:bg-[#4d4d4d] cursor-pointer');
+            
+            playlists.forEach(playlist => {
+                    const playlistType = playlist.querySelector('.playlist-type');
+                    const dot = playlist.querySelector('.dot');
+                    const artistName = playlist.querySelector('.artist-name');
+                    const coverImage = playlist.querySelector('.cover-image');
+
+                    if (playlistType && playlistType.textContent.trim() === 'Artist') {
+                        if (dot) dot.classList.add('hidden');
+                        if (artistName) artistName.classList.add('hidden');
+                        if (coverImage) coverImage.classList.add('rounded-full');
+                    }
+                });
+
+
+
+            document.querySelectorAll('.lists').forEach(section => {
+                const leftBtn = section.querySelector('.left-button');
+                const rightBtn = section.querySelector('.right-button');
+                const mfya = section.querySelector('.made-for-you-albums');
+
+                function checkScroll() {
+                    leftBtn.style.display = mfya.scrollLeft <= 0 ? 'none' : 'block';
+                    rightBtn.style.display = mfya.scrollLeft + mfya.clientWidth >= mfya.scrollWidth - 1 ? 'none' : 'block';
+                }
+
+                checkScroll();
+
+                leftBtn.addEventListener('click', () => {
+                    mfya.scrollBy({ left: -300, behavior: 'smooth' });
+                    checkScroll();
+                });
+
+                rightBtn.addEventListener('click', () => {
+                    mfya.scrollBy({ left: 300, behavior: 'smooth' });
+                    checkScroll();
+                });
+
+                mfya.addEventListener('scroll', checkScroll);
+            })
+
+            localStorage.setItem('lastPage', window.location.pathname);
+
+            </script>
+        
+        </body>
+        
+        </html>
